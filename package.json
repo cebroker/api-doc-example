@@ -4,8 +4,12 @@
   "description": "Example and scaffolding of API documentation",
   "main": "src/index.js",
   "scripts": {
-    "start":"nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "redoc-bundle": "redoc-cli bundle ./spec/api.yaml --output ./docs/index.html",
+    "redoc-watch": "watch \"npm run redoc-bundle\" ./spec",
+    "redoc-reload": "live-server --watch=docs/ --open=docs/",
+    "api-doc": "concurrently \"npm run redoc-reload\" \"npm run redoc-watch\""
   },
   "repository": {
     "type": "git",
@@ -24,6 +28,10 @@
     "swagger-tools": "0.10.4"
   },
   "devDependencies": {
-    "nodemon": "1.18.3"
+    "concurrently": "^3.6.1",
+    "live-server": "^1.2.0",
+    "nodemon": "1.18.3",
+    "redoc-cli": "^0.6.1",
+    "watch": "^1.0.2"
   }
 }
