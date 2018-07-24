@@ -1,0 +1,29 @@
+{
+  "name": "api-doc-example",
+  "version": "0.0.1",
+  "description": "Example and scaffolding of API documentation",
+  "main": "src/index.js",
+  "scripts": {
+    "start":"nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cebroker/api-doc-example.git"
+  },
+  "author": "Condorlabs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cebroker/api-doc-example/issues"
+  },
+  "homepage": "https://github.com/cebroker/api-doc-example#readme",
+  "dependencies": {
+    "body-parser": "1.18.3",
+    "express": "4.16.3",
+    "helmet": "3.13.0",
+    "swagger-tools": "0.10.4"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.3"
+  }
+}
