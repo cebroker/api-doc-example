@@ -1,0 +1,8 @@
+---
+swagger: "2.0"
+info:
+  description: "The API specification for the example API"
+  version: "1.0.0"
+  title: "example-api"
+host: ""
+basePath: "/"
