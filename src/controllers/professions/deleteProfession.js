@@ -1,5 +1,5 @@
 function deleteProfessions(req, res, next) {
-  res.status(200).json({ response: 'Delete professions' });
+  res.status(204).send('Profession successfully deleted');
 }
 
 module.exports = deleteProfessions;
