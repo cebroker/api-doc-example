@@ -6,10 +6,11 @@
   "scripts": {
     "start": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "redoc-bundle": "redoc-cli bundle ./spec/api.yaml --output ./docs/index.html",
+    "redoc-bundle": "redoc-cli bundle ./spec/api-description.yml --output ./docs/index.html",
     "redoc-watch": "watch \"npm run redoc-bundle\" ./spec",
     "redoc-reload": "live-server --watch=docs/ --open=docs/",
-    "api-doc": "concurrently \"npm run redoc-reload\" \"npm run redoc-watch\""
+    "api-doc": "concurrently \"npm run redoc-reload\" \"npm run redoc-watch\"",
+    "test:spec": "dredd"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "concurrently": "^3.6.1",
+    "dredd": "5.1.11",
     "live-server": "^1.2.0",
     "nodemon": "1.18.3",
     "redoc-cli": "^0.6.1",

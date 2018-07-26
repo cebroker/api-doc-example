@@ -1,15 +1,20 @@
 const createProfessions = require('./createProfessions');
-const deleteProfessions = require('./deleteProfessions');
 const getProfessions = require('./getProfessions');
-const updateProfessions = require('./updateProfessions');
+const getProfession = require('./getProfession');
+const updateProfession = require('./updateProfession');
+const deleteProfession = require('./deleteProfession');
 
 const router = require('express').Router();
 
 router
   .route('/')
   .get(getProfessions)
-  .post(createProfessions)
-  .put(updateProfessions)
-  .delete(deleteProfessions);
+  .post(createProfessions);
+
+router
+  .route('/:id')
+  .get(getProfession)
+  .patch(updateProfession)
+  .delete(deleteProfession);
 
 module.exports = router;
