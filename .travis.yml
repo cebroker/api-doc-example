@@ -1,13 +1,14 @@
 language: node_js
-
 sudo: required
-
 cache:
   directories:
-    - "node_modules"
+    - node_modules
+    
+node_js: 8.8.1
 
-node_js:
-  8.8.1
+before_install:
+  - npm install
 
-script: 
-  - npm install && CI=true npm run test:spec
+script:
+  - CI=true npm run test:spec
+
