@@ -1,0 +1,16 @@
+swagger: "2.0"
+
+info:
+  version: 1.0.0
+  title: Example API
+  description: The API specification for the example API
+
+tags:
+  - name: Professions
+    description: Everything you need to handle professions
+
+paths:
+  /professions:
+    $ref: "professions.yml#/professions"
+  /professions/{id}:
+    $ref: "professions.yml#/professions-id"

@@ -1,0 +1,28 @@
+definitions:   
+  Error:
+    type: object
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+  
+responses:
+  Standard500ErrorResponse:
+    description: An unexpected error occured
+    schema:
+      $ref: "#/definitions/Error"
+
+parameters:
+  offset:
+    name: offset
+    in: query
+    description: Number of rows to skip
+    type: integer
+    default: 0
+  limit:
+    name: limit
+    in: query
+    description: Number of rows to return
+    type: integer
+    default: 5

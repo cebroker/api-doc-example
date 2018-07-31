@@ -1,0 +1,117 @@
+professions:
+  get:
+    summary: Get all professions
+    description: Returns a list containing all professions
+    tags:
+      - Professions
+    parameters:
+      - $ref: "commons.yml#/parameters/offset"
+      - $ref: "commons.yml#/parameters/limit"
+    responses:
+      200:
+        description: A list of professions
+        schema:
+          $ref: "#/definitions/Professions"
+      500:
+        $ref: "commons.yml#/responses/Standard500ErrorResponse"
+
+  post:
+    summary: Create profession
+    description: Adds a new profession to the list
+    tags:
+      - Professions
+    parameters:
+    - name: "profession"
+      in: "body"
+      required: true
+      description: The profession
+      schema:
+        $ref: "#/definitions/Profession"
+    responses:
+      200:
+        description: Profession successfully created
+        schema:
+          $ref: "#/definitions/Profession"
+      500:
+        $ref: "commons.yml#/responses/Standard500ErrorResponse"
+
+professions-id:
+  parameters:
+    - $ref: "#/parameters/id"
+
+  get:
+    summary: Get profession
+    description: Returns a single profession from its id
+    tags:
+      - Professions     
+    responses:
+      200:
+        description: A profession
+        schema:
+          $ref: "#/definitions/Profession"
+      404:
+        $ref: "#/responses/ProfessionDoesNotExistResponse"
+      500:
+        $ref: "commons.yml#/responses/Standard500ErrorResponse"
+
+  delete:
+    summary: Delete profession
+    description: Deletes a single profession from its id
+    tags:
+      - Professions
+    responses:
+      204:
+        description: Profession successfully deleted
+      500:
+        $ref: "commons.yml#/responses/Standard500ErrorResponse"
+
+  patch:
+    summary: Update profession
+    description: Update a single profession from its id
+    tags:
+      - Professions
+    parameters:
+    - name: "profession"
+      in: "body"
+      required: true
+      description: The profession
+      schema:
+        $ref: "#/definitions/Profession"
+    responses:
+      200:
+        description: Profession successfully updated
+      404:
+        $ref: "#/responses/ProfessionDoesNotExistResponse"
+      500:
+        $ref: "commons.yml#/responses/Standard500ErrorResponse"
+
+definitions:
+  Profession:
+    type: object
+    required:
+      - id
+      - name
+    properties:
+      id:
+        type: integer
+        readOnly: true
+      name: 
+        type: string
+
+  Professions:
+    type: array
+    items:
+      $ref:  "#/definitions/Profession"
+
+responses:
+  ProfessionDoesNotExistResponse:
+    description: Profession does not exist
+
+parameters:
+  id:
+    name: id
+    in: path
+    required: true
+    description: The profession id
+    type: integer
+    enum: [1,2,3,4,5,6,7,8,9]

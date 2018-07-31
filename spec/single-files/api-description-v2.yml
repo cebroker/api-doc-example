@@ -5,6 +5,10 @@ info:
   title: Example API
   description: The API specification for the example API
 
+tags:
+  - name: Professions
+    description: Everything you need to handle professions
+
 paths:
   /professions:
     get:
@@ -12,6 +16,9 @@ paths:
       description: Returns a list containing all professions
       tags:
         - Professions
+      parameters:
+        - $ref: "#/parameters/offset"
+        - $ref: "#/parameters/limit"
       responses:
         200:
           description: A list of professions
@@ -133,3 +140,15 @@ parameters:
     description: The profession id
     type: integer
     enum: [1,2,3,4,5,6,7,8,9]
+  offset:
+    name: offset
+    in: query
+    description: Number of rows to skip
+    type: integer
+    default: 0
+  limit:
+    name: limit
+    in: query
+    description: Number of rows to return
+    type: integer
+    default: 5
