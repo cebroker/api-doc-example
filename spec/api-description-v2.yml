@@ -8,20 +8,40 @@ info:
   description: >
     # Overview
 
-    The API Doc Example is RESTful API. The requests and responses are formated according to the [JSON API](http://jsonapi.org/format/1.0/) specification.
+    The **API Doc Example** is RESTful API. The requests and responses are formated
+    according to the [JSON API](http://jsonapi.org/format/1.0/) specification.
+
+    # Authentication
+
+    Authentication for the API Doc Example is based on the [OAuth 2.0 Authorization
+    Framework](https://tools.ietf.org/html/rfc6749). Twine currently supports
+    grant types of **client_credentials** and **refresh_token**.
+
+    # Paging
+
+    Skip-based paging uses the query parameters `page[size]` and `page[number]`
+    to specify the max number of resources returned and the page number. We
+    default to skip-based paging if there are no page parameters. The response
+    will include a `links` object containing links to the first, last, prev, and
+    next pages of data.
+
+
+    If the contents of the collection change while you are iterating through the
+    collection, you will see duplicate or missing documents. For example, if you
+    are iterating through the `calender_event` resource via `GET
+    /pub/calendar_event?sort=start_at&page[size]=50&page[number]=1`, and a new
+    `calendar_event` is created that has a `start_at` value before the first
+    `calendar_event`, when you fetch the next page at `GET
+    /pub/calendar_event?sort=start_at&page[size]=50&page[number]=2`, the first
+    entry in the second response will be a duplicate of the last entry in the
+    first response.
 
 host: 'education.test.evercheck.com'
-basePath: '/api'
-schemes:
-  - 'https'
-consumes:
-  - application/json
-produces:
-  - application/json
+
 paths:
   /professions:
     get:
-      summary: List professions
+      summary: List of Professions
       description: Get a list of professions matching the specified filters.
       operationId: getProfessions
       tags:
@@ -110,11 +130,14 @@ definitions:
     required:
       - id
       - name
+      - state
     properties:
       id:
         type: integer
         readOnly: true
       name:
+        type: string
+      state:
         type: string
 
   Professions:
