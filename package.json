@@ -9,8 +9,7 @@
     "redoc-bundle": "redoc-cli bundle ./spec/api-description-v2.yml --output ./docs/index.html",
     "redoc-reload": "live-server --watch=docs/ --open=docs/",
     "redoc-watch": "watch \"npm run redoc-bundle\" ./spec",
-    "api-doc": "concurrently \"npm run redoc-reload\" \"npm run redoc-watch\"",
-    "test:spec": "dredd"
+    "api-doc": "concurrently \"npm run redoc-reload\" \"npm run redoc-watch\""
   },
   "repository": {
     "type": "git",
@@ -30,7 +29,7 @@
   },
   "devDependencies": {
     "concurrently": "^3.6.1",
-    "dredd": "5.1.11",
+    "dredd": "^5.1.11",
     "live-server": "^1.2.0",
     "nodemon": "1.18.3",
     "redoc-cli": "^0.6.1",

@@ -3,12 +3,5 @@ sudo: required
 cache:
   directories:
     - node_modules
-    
+
 node_js: 8.8.1
-
-before_install:
-  - npm install
-
-script:
-  - CI=true npm run test:spec
-
